@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit  R  | Tech Journey</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background: #0a0a2a;
+      position: relative;
+    }
+
+    /* Canvas background */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #b0e0e6;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      color: #00ffff;
+      margin: 0 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: #ff69b4; }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 25px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,255,255,0.2);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.show { opacity: 1; transform: translateY(0); }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .card { padding: 20px; }
+
+    a.link {
+      color: #ff69b4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.link:hover { color: #00ffff; }
+
+    button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #00ffff, #ff69b4);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button:hover { transform: scale(1.05); }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      color: #b0e0e6;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #00ffff;
+      margin: 0 auto 15px;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 0 20px #00ffff;
+      transition: transform 0.5s;
+    }
+
+    .profile-pic:hover { transform: scale(1.1) rotate(5deg); }
+
+    @media(max-width:768px) {
+      header h1 { font-size:2rem; }
+      section { margin:40px 15px; padding:20px; }
+      .profile-pic { width:120px; height:120px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas for animated lights -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Header -->
+  <header>
+    <img class="profile-pic" src="profile .jpg.jpeg" alt="Rohit Rathod">
+    <h1>Rohit Rathod</h1>
+    <p>BCA (Science) Student | MGM University Sambhajinagar</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <p>I am a student, learning new skills like web development. Passionate about technology and continuously improving myself to become a better developer.</p>
+  </section>
+
+  <section id="education" class="card">
+    <h2>Education</h2>
+    <p><strong>Bachelor of Computer Applications (Science)</strong> - 2nd Year</p>
+    <p>MGM University, Sambhajinagar</p>
+  </section>
+
+  <section id="skills" class="card">
+    <h2>Skills & Interests</h2>
+    <ul>
+      <li>Web Development (HTML, CSS, JavaScript)</li>
+      <li>Programming in C and C++</li>
+      <li>Database Management Systems</li>
+      <li>Exploring new technologies</li>
+    </ul>
+  </section>
+
+<section id="contact" class="card">
+  <h2>Contact Me</h2>
+  <p><strong>Mobile:</strong> 
+     <a class="link" href="tel:9403497355">9403497355</a>
+  </p>
+  <p><strong>Email:</strong> 
+     <a class="link" href="mailto:rohit2004rathod26@gmail.com">rohit2004rathod26@gmail.com</a>
+  </p>
+  <p><strong>Instagram:</strong> 
+     <a class="link" href="https://www.instagram.com/rohitrathod._2?igsh=bWo1ZGdrbDFxb3lp" target="_blank">@rohitrathod._2</a>
+  </p>
+  <p><strong>LinkedIn:</strong> 
+     <a class="link" href="https://www.linkedin.com/in/rohit-rathod-715329332" target="_blank">Rohit Rathod Profile</a>
+  </p>
+  <button onclick="sayHello()">Say Hello</button>
+  <p id="msg" style="margin-top:10px; font-weight:bold;"></p>
+</section>
+
+  <footer>
+    &copy; 2025 Rohit Rathod | All Rights Reserved
+  </footer>
+
+  <script>
+    // Button message
+    function sayHello() {
+      document.getElementById("msg").innerText = "Hello 👋 Thanks for visiting my website!";
+    }
+
+    // Scroll reveal animation
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.8;
+      sections.forEach(section => {
+        if(section.getBoundingClientRect().top < triggerBottom) section.classList.add("show");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    // Jellyfish / floating lights effect
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const lights = [];
+    for(let i=0;i<50;i++){
+      lights.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        radius: Math.random()*3+2,
+        dx: (Math.random()-0.5)*0.5,
+        dy: (Math.random()-0.5)*0.5,
+        alpha: Math.random()*0.5+0.3
+      });
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      lights.forEach(l=>{
+        ctx.beginPath();
+        ctx.arc(l.x,l.y,l.radius,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(0,255,255,'+l.alpha+')';
+        ctx.fill();
+        l.x += l.dx;
+        l.y += l.dy;
+        if(l.x<0) l.x=canvas.width;
+        if(l.x>canvas.width) l.x=0;
+        if(l.y<0) l.y=canvas.height;
+        if(l.y>canvas.height) l.y=0;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize',()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
+
+
